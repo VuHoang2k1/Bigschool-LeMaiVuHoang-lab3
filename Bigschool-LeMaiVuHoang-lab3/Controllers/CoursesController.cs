@@ -21,6 +21,7 @@ namespace Bigschool_LeMaiVuHoang_lab3.Controllers
         [Authorize]
         public ActionResult create()
         {
+            //jgjhnjhghhj
             var viewModel = new CourseViewModel
             {
                 Categories = _dbContext.Categories.ToList()
