@@ -1,6 +1,7 @@
 ﻿using Bigschool_LeMaiVuHoang_lab3.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,12 +9,16 @@ namespace Bigschool_LeMaiVuHoang_lab3.ViewModels
 {
     public class CourseViewModel
     {
+        [Required]
         public string place { get; set; }
+        [Required]
+        [FutureDate]
         public string Date { get; set; }
+        [Required]
+        [ValidTime]
         public string Time { get; set; }
-     
-
-            public byte Category { get; set; }
+        [Required]
+        public byte Category { get; set; }
             public IEnumerable<Category> Categories { get; set; }
 
             public DateTime GetDateTime()
