@@ -12,37 +12,30 @@ namespace Bigschool_LeMaiVuHoang_lab3.Controllers
     public class CoursesController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
-
         public CoursesController()
         {
             _dbContext = new ApplicationDbContext();
         }
-
-        // GET: Courses
+        // GET: Courses        
         [Authorize]
         public ActionResult Create()
         {
-            var viewModel = new CourseViewModel
+            var ViewModel = new CourseViewModel
             {
                 Categories = _dbContext.Categories.ToList()
-        };
-            return View(viewModel);
+            };
+            return View(ViewModel);
         }
-
-
-
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public ActionResult Create(CourseViewModel viewModel)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 viewModel.Categories = _dbContext.Categories.ToList();
                 return View("Create", viewModel);
             }
-
             var course = new Course
             {
                 LecturerId = User.Identity.GetUserId(),
